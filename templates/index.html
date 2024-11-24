@@ -1,17 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <title>Telegram Bot Control</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}
+Домик
+{% endblock %}
+
+{% block body %}
 <div class="container">
-    <h1 class="mt-5">Управление Telegram-ботом</h1>
-    <form action="/start_bot" method="post">
-        <button type="submit" class="btn btn-primary mt-3">Запустить бота</button>
-    </form>
+    <h2>Список гороскопов</h2>
+
+    {% for horo in horoscopes %}
+    <div class="alert alert-info">
+        <h3>{{ horo.sign }}</h3>
+        <p><b>{{ horo.date.date() }}</b></p>
+    </div>
+    {% endfor %}
+
 </div>
-</body>
-</html>
+{% endblock %}
